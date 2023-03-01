@@ -2,7 +2,7 @@ name: Build and Deploy Patch Release
 
 on:
   push:
-    branches: [ 'master' ]
+    branches: [ 'master', 'fix-patch-ci-workflow' ]
 
 jobs:
   build:
@@ -42,6 +42,7 @@ jobs:
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
+        ssh: true
         github_token: ${{ secrets.OUR_GITHUB_TOKEN }}
         branch: ${{ github.ref }}
         tags: true
