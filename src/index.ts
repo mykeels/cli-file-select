@@ -1,9 +1,12 @@
+#!/usr/bin/env node
+
+import cac from "cac";
 import { promises as fs } from "fs";
 import os from "os";
 import path from "path";
 import prompts from "prompts";
 
-export const selectFile = async (root: string): Promise<string> => {
+export const selectFile = async (root = os.homedir()): Promise<string> => {
   const items = await fs.readdir(path.resolve(root), {
     withFileTypes: true,
   });
@@ -11,7 +14,7 @@ export const selectFile = async (root: string): Promise<string> => {
   const { entry } = (await prompts({
     type: "select",
     name: "entry",
-    message: "Navigate",
+    message: "",
     choices: [
       ...(isSystemRoot
         ? []
@@ -34,7 +37,7 @@ export const selectFile = async (root: string): Promise<string> => {
     : selectFile(path.join(root, entry.name));
 };
 
-export const selectDirectory = async (root: string): Promise<string> => {
+export const selectDirectory = async (root = os.homedir()): Promise<string> => {
   const items = await fs.readdir(path.resolve(root), {
     withFileTypes: true,
   });
@@ -42,7 +45,7 @@ export const selectDirectory = async (root: string): Promise<string> => {
   const { entry } = (await prompts({
     type: "select",
     name: "entry",
-    message: "Navigate",
+    message: "",
     choices: [
       ...(isSystemRoot
         ? []
@@ -75,7 +78,16 @@ export default selectFile;
 
 if (require.main === module) {
   (async () => {
-    const dir = await selectDirectory(os.homedir());
-    console.log(dir);
+    const cli = cac("cli-file-select");
+    cli.command("[]", "Select a file").action(async () => {
+      const file = await selectFile();
+      console.log(file);
+    });
+    cli.command("directory", "Select a directory").action(async () => {
+      const directory = await selectDirectory();
+      console.log(directory);
+    });
+    cli.help();
+    cli.parse();
   })();
 }
