@@ -4,7 +4,7 @@
   "description": "Select a file/folder from the filesystem with cli I/O prompts",
   "main": "dist/index.js",
   "bin": "dist/index.js",
-  "typings": "dist/*.d.ts",
+  "typings": "dist",
   "files": [
     "dist"
   ],
