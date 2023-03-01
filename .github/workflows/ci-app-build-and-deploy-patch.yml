@@ -46,6 +46,6 @@ jobs:
         branch: ${{ github.ref }}
         tags: true
     - run: pnpm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
-    - run: pnpm publish --no-git-checks
+    - run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
