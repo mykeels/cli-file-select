@@ -1,6 +1,6 @@
 {
   "name": "cli-file-select",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Select a file/folder from the filesystem with cli I/O prompts",
   "main": "dist/index.js",
   "bin": "dist/index.js",
