@@ -1,7 +1,7 @@
 {
   "name": "cli-file-select",
   "version": "0.0.0",
-  "description": "Navigate the file system with standard I/O prompts and select a file/folder",
+  "description": "Select a file/folder from the filesystem with cli I/O prompts",
   "main": "dist/index.js",
   "bin": "dist/index.js",
   "typings": "dist/*.d.ts",
