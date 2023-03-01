@@ -1,8 +1,13 @@
 {
   "name": "cli-file-select",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Navigate the file system with standard I/O prompts and select a file/folder",
   "main": "dist/index.js",
+  "bin": "dist/index.js",
+  "typings": "dist/*.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup src/index.ts",
     "watch": "tsup src/index.ts --watch",
@@ -23,10 +28,10 @@
     "@types/node": "^18.14.2",
     "@types/prompts": "^2.4.2",
     "tsup": "^6.6.3",
-    "typescript": "^4.9.5",
-    "zod": "^3.20.6"
+    "typescript": "^4.9.5"
   },
   "dependencies": {
+    "cac": "^6.7.14",
     "prompts": "^2.4.2"
   }
 }
